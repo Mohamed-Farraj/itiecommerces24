@@ -1,5 +1,8 @@
 # Itiecommerces24
 
+APIs built with json-server in folder server 
+this project using bootstrap
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
 
 ## Development server
