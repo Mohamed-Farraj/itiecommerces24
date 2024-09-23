@@ -15,19 +15,22 @@
       @for (product of filteredProducts; track product._id) {
        <div class="col-md-3">
          <div class="card">
-             <img [src]="product.imageCover" class="card-img-top w-100 object-fit-contain" alt="...">
-             <div class="card-body">
-               <h5 class="card-title productTitle">{{product.title}}</h5>
-               <span class="h6 text-success  d-block">{{product.category.name}}</span>
-               <span class="h6 text-success mb-3 d-block">{{product.price |  currency:'GBP' }}</span>
-               <p class="card-text description">{{product.description}}</p>
-               <a (click)="showAlert()" [ngStyle]="{ display: admin ? 'none' : 'block' }" class="btn btn-success">Buy now</a>
-               <div [ngStyle]="{ display: admin ? 'block' : 'none' }">
-                <a class="btn btn-warning">Edit</a>
-                <a (click)="deleteLogic(product.id)" class="btn mx-2 btn-danger">Delete</a>
-               </div>
-               
-             </div>
+          <div [routerLink]="['/details',product.id]" >
+            <img [src]="product.imageCover" class="card-img-top w-100 object-fit-contain" alt="...">
+            <div class="card-body">
+              <h5 class="card-title productTitle">{{product.title}}</h5>
+              <span class="h6 text-success  d-block">{{product.category.name}}</span>
+              <span class="h6 text-success mb-3 d-block">{{product.price |  currency:'GBP' }}</span>
+              <p class="card-text description">{{product.description}}</p>
+            </div>
+          </div>
+          <div class="p-3">
+            <a (click)="showAlert()" [ngStyle]="{ display: admin ? 'none' : 'block' }" class="btn btn-success">Buy now</a>
+            <div [ngStyle]="{ display: admin ? 'block' : 'none' }">
+             <a class="btn btn-warning">Edit</a>
+             <a (click)="deleteLogic(product.id)" class="btn mx-2 btn-danger">Delete</a>
+            </div>
+          </div>
            </div>
           </div>
         }
