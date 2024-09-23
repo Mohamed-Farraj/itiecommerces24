@@ -6,3 +6,21 @@ input:focus{
     aspect-ratio: 2/1.5 !important;
     object-fit: contain;
 }
+.description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    line-height: 1.5;
+    max-height: calc(2 * 1.5em);
+  }
+.productTitle {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    line-height: 1.5;
+    max-height: calc(1 * 1.5em);
+  }

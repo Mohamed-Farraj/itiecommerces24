@@ -4,21 +4,20 @@
     
     <input  type="search" class="form-control mx-auto my-2 w-75 p-3" placeholder="Search by name...." >
     <div class="row mt-5 pt-5 g-4">
-     
+     @for (product of filteredArray; track product._id) {
       <div class="col-md-3">
-
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1542372712-fc07597133cd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D" class="card-img-top w-100 object-fit-cover" alt="...">
+            <img [src]="product.imageCover" class="card-img-top w-100 object-fit-contain" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <span class="h6 text-success mb-3 d-block">Category</span>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title productTitle">{{product.title}}</h5>
+              <span class="h6 text-success  d-block">{{product.category.name}}</span>
+              <span class="h6 text-success mb-3 d-block">{{product.price |  currency:'GBP' }}</span>
+              <p class="card-text description">{{product.description}}</p>
               <a class="btn btn-success">Buy now</a>
             </div>
           </div>
-
       </div>
-    
+    }
     </div>
 </div>
   </section>
