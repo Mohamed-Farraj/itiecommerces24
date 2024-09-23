@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Iproduct } from '../../core/interfaces/iproduct';
 import { CommonModule, CurrencyPipe, NgStyle } from '@angular/common';
@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit {
 
   private readonly _ApiService = inject(ApiService)
   private readonly _ActivatedRoute = inject(ActivatedRoute)
-
+  @Input() admin:boolean = false;
   allProducts: Iproduct[] = []
   filteredProducts: Iproduct[] = []
   categories: any[] = []
@@ -35,7 +35,7 @@ export class ProductsComponent implements OnInit {
             console.log(res);
             this.categories = res
             this._ActivatedRoute.params.subscribe((params) => {
-              this.cat = params['cat']
+              params['cat'] ? this.cat = params['cat'] : this.cat = 'all'
               this.selectedCategory = this.cat
               this.filterByCategory();
               console.log(this.cat);
@@ -51,6 +51,9 @@ export class ProductsComponent implements OnInit {
     if (this.cat !== 'all') {
       this.filteredProducts = this.allProducts.filter(product => product.category.name === this.cat)
     } 
+    else {
+      this.filteredProducts = this.allProducts;
+    }
     // Apply search filter after category filter
     this.filterByName();
   }
@@ -73,4 +76,8 @@ export class ProductsComponent implements OnInit {
   onSearchChange() {
     this.filterByCategory();  // Apply category filter first and then search by name
   }
+
+
+
+
 }

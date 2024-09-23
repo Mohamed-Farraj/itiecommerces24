@@ -21,7 +21,12 @@
                <span class="h6 text-success  d-block">{{product.category.name}}</span>
                <span class="h6 text-success mb-3 d-block">{{product.price |  currency:'GBP' }}</span>
                <p class="card-text description">{{product.description}}</p>
-               <a class="btn btn-success">Buy now</a>
+               <a [ngStyle]="{ display: admin ? 'none' : 'block' }" class="btn btn-success">Buy now</a>
+               <div [ngStyle]="{ display: admin ? 'block' : 'none' }">
+                <a class="btn btn-warning">Edit</a>
+                <a class="btn mx-2 btn-danger">Delete</a>
+               </div>
+               
              </div>
            </div>
           </div>
