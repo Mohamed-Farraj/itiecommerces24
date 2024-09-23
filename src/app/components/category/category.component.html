@@ -1,9 +1,9 @@
 <div class="container-xxl">
     <div class="row ">
         
-        <a [routerLink]="['/products' , category.name]" class="card m-3 text-decoration-none" style="width: 270px;" *ngFor="let category of categories">
-            <img [src]="category.image" class="w-100 h-75" alt="">
-            <h3 class="m-auto w-100">{{category.name}}</h3>
+        <a [routerLink]="['/products' , category.name]" class="card px-0 m-3 text-decoration-none" style="width: 270px;" *ngFor="let category of categories">
+            <img [src]="category.image" class="w-100 object-fit-cover h-75" alt="">
+            <h3 class="m-auto px-3 w-100">{{category.name}}</h3>
         </a>
 
     </div>
