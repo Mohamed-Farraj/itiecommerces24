@@ -4,11 +4,13 @@ import { Iproduct } from '../../core/interfaces/iproduct';
 import { CommonModule, CurrencyPipe, NgStyle } from '@angular/common';
 import { ApiService } from '../../core/services/api.service';
 import { FormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [RouterLink, CurrencyPipe, NgStyle, FormsModule],
+  imports: [RouterLink, CurrencyPipe, NgStyle, FormsModule,SweetAlert2Module],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -23,6 +25,56 @@ export class ProductsComponent implements OnInit {
   cat: string = '';
   selectedCategory: string = '';
   searchTerm: string = '';  // New property to store the search term
+
+
+
+
+
+  showAlert(){
+    Swal.fire({
+      title: 'Thank You!',
+      text: 'Your Order On Deliver',
+      icon: 'success',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#30d633',  // Custom button color
+      cancelButtonColor: '#d33',
+      showCancelButton: false,
+      cancelButtonText: 'Cancel'
+    });
+  }
+
+  deleteAlert(){
+    
+  }
+
+  deleteLogic(id:string){
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#30d633",
+      cancelButtonColor: "#818181",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._ApiService.delete_product(id).subscribe({
+          next:()=>{
+            Swal.fire({
+              title: "Deleted!",
+              text: "Product has been deleted.",
+              confirmButtonColor: "#30d633",
+              icon: "success"
+            });
+            this.filteredProducts = this.filteredProducts.filter(product => product._id!== id)
+          }
+        })
+      }
+    });
+
+   
+  }
 
   ngOnInit(): void {
     this._ApiService.Get_All_Products().subscribe({
