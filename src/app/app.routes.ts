@@ -10,8 +10,6 @@ import { DetailsComponent } from './components/details/details.component';
 export const routes: Routes = [
     {path:'', redirectTo:'home', pathMatch:'full'},
     {path:'home' , component:HomeComponent},
-    {path:'', redirectTo:'home', pathMatch:'full'},
-    {path:'home' , component:HomeComponent},
     {path:'products/:cat',component:ProductsComponent},
     {path:'category' , component:CategoryComponent},
     {path: 'admin' , component:AdminComponent},

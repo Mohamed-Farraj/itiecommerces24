@@ -43,9 +43,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  deleteAlert(){
-    
-  }
+
 
   deleteLogic(id:string){
 
@@ -67,7 +65,7 @@ export class ProductsComponent implements OnInit {
               confirmButtonColor: "#30d633",
               icon: "success"
             });
-            this.filteredProducts = this.filteredProducts.filter(product => product._id!== id)
+            this.filteredProducts = this.filteredProducts.filter(product => product.id!== id)
           }
         })
       }

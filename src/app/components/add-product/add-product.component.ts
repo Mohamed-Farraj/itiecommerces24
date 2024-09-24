@@ -54,7 +54,7 @@ ngOnInit(): void {
         this.myproduct = data;
         this.getImage.setValue(this.myproduct.imageCover);
         this.getName.setValue(this.myproduct.title);
-        this.getCategory.setValue(this.myproduct.category);
+        this.getCategory.setValue(this.myproduct.category.name);
         this.getPrice.setValue(this.myproduct.price);
         this.getDescription.setValue(this.myproduct.description);
       },
@@ -67,17 +67,32 @@ ngOnInit(): void {
   });
 }
 
+submittedobj:any = {}
 onsubmit() {
   console.log(this.myForm);
   if (this.myForm.status == 'VALID') {
     if (this.productId == 0) {
-      this.service.Add_Product(this.myForm.value).subscribe({
+      this.submittedobj = {
+        imageCover: this.myForm.value.imageCover,
+        title: this.myForm.value.title,
+        category: {name:this.myForm.value.category},
+        price: this.myForm.value.price,
+        description: this.myForm.value.description,
+       };
+      this.service.Add_Product(this.submittedobj).subscribe({
         next: () => {
           this.router.navigate(['/admin']);
         },
       });
     } else {
-      this.service.edit_product(this.productId, this.myForm.value).subscribe({
+      this.submittedobj = {
+        imageCover: this.myForm.value.imageCover,
+        title: this.myForm.value.title,
+        category: {name:this.myForm.value.category},
+        price: this.myForm.value.price,
+        description: this.myForm.value.description,
+       };
+      this.service.edit_product(this.productId, this.submittedobj).subscribe({
         next: () => {
           this.router.navigate(['/admin']);
         },
