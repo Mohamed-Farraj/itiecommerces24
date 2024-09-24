@@ -1,0 +1,8 @@
+.eclips{
+    width: 36.625rem;
+    height: 25.8125rem;
+    border-radius: 39% 61% 77% 23% / 76% 45% 55% 24% ;
+    background-color: var(--main-color);
+    background-image: linear-gradient(rgba(60, 218, 94, 0.97),rgba(60, 218, 94, 0.97)) ,url("./../../../assets/download.png");
+    background-size: 15%;
+}

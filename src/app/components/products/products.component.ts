@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [RouterLink, CurrencyPipe, NgStyle, FormsModule,SweetAlert2Module],
+  imports: [RouterLink, CurrencyPipe, NgStyle, FormsModule,SweetAlert2Module,RouterLink],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })

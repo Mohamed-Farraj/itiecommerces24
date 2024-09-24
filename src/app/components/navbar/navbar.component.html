@@ -1,1 +1,41 @@
-<p>navbar works!</p>
+<div style="position: sticky; top: 0; " class="mx-auto bg-white py-2 mb-5 shadow-sm z-3">
+    <nav style="width: 90%;" class="mx-auto navbar navbar-expand-lg navbar-light ">
+      <div class="container-fluid">
+        <!-- First Logo (Text) -->
+        <a class="navbar-brand" href="#"><span class="spanHeaderName-1">Quick</span ><span class="spanHeaderName-2">Pik</span></a>
+  
+        <!-- Navbar toggler (for mobile view) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Navbar content (collapsible) -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <!-- Navigation Links in the Center -->
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/products','all']">Products </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/category']">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/admin']">Admin dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact us</a>
+            </li>
+          </ul>
+  
+          <!-- Button and icons (right side) -->
+          <div class="d-flex align-items-center">
+            <!-- Sign Up Button -->
+            <a [routerLink]="['/products','all']" class="btn btn-primary me-3 btn-navbar">ShopNow</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
