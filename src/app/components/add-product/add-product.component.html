@@ -1,0 +1,79 @@
+<div class="container"></div>
+  <form class="form-group my-5" [formGroup]="myForm" (ngSubmit)="onsubmit()">
+    <input
+      class="form-control my-3"
+      type="text"
+      name="imageCover"
+      placeholder="enter imageURL"
+      formControlName="imageCover"
+    />
+    <p
+      class="text-danger"
+      *ngIf="getImage.touched && getImage.errors?.['required']"
+    >
+      please enter imageURL!
+    </p>
+    <input
+      class="form-control my-3"
+      type="text"
+      name="title"
+      placeholder="enter product name"
+      formControlName="title"
+    />
+    <p
+      class="text-danger"
+      *ngIf="getName.touched && getName.errors?.['required']"
+    >
+      please enter product name!
+    </p>
+    <p
+      class="text-danger"
+      *ngIf="getName.touched&&getName.errors?.['minlength']"
+    >
+      product name must be at least 3 characters!
+    </p>
+    <input
+      class="form-control my-3"
+      type="number"
+      name="price"
+      placeholder="enter product price"
+      formControlName="price"
+    />
+    <p
+      class="text-danger"
+      *ngIf="getPrice.touched && getPrice.errors?.['required']"
+    >
+      please enter product price!
+    </p>
+    <p class="text-danger" *ngIf="getPrice.touched&&getPrice.errors?.['min']">
+        product price must be at least 1$!
+    </p>
+    <input
+      class="form-control my-3"
+      type="text"
+      name="description"
+      placeholder="enter your track"
+      formControlName="description"
+    />
+    <p
+      class="text-danger"
+      *ngIf="getDescription.touched && getDescription.errors?.['required']"
+    >
+      please enter product description!
+    </p>
+    <p class="text-danger" *ngIf="getDescription.touched&&getDescription.errors?.['max']">
+        product description cannot be more than 1000 characters!
+    </p>
+    <select class="form-control my-3" formControlName="category">
+        <option value="" disabled selected>Select Category</option>
+        <option *ngFor="let cat of Categories" [value]="cat.name">{{cat.name}}</option>
+      </select>
+    <p
+      class="text-danger"
+      *ngIf="getCategory.touched && getCategory.errors?.['required']"
+    >
+      please select a category!
+    </p>
+    <button class="btn btn-success my-3">Save</button>
+  </form>
+</div>
