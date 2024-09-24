@@ -7,6 +7,48 @@
     background-size: 15%;
 }
 
+/* Karam */
+.colors{
+  color:#184363;
+  font-weight: 800;
+}
+.product_card{
+  width: 48%;
+  border-radius: 5px;
+  min-height: 300px;
+}
+.medical_card{
+  width: 48%;
+  min-height: 300px;
+  color: #184363;
+  line-height: 40px;
+}
+.medical_card_parag p{
+  text-align: center;
+  background-color:#F2971F;
+  width: 100px;
+  border-radius: 40%;
+}
+.fir{
+  background-image: url(../../../assets/Masks.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.sec{
+  background-image: url(../../../assets/pack.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.triangle{
+  width: 0;
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 300px solid #3cda5e7a;
+}
+
+/* Karam */
+
 /* Abdelgawad section */
 .testimonial-card {
   border-radius: 10px;
