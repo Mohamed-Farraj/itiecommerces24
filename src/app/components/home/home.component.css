@@ -6,3 +6,132 @@
     background-image: linear-gradient(rgba(60, 218, 94, 0.97),rgba(60, 218, 94, 0.97)) ,url("./../../../assets/download.png");
     background-size: 15%;
 }
+
+/* Abdelgawad section */
+.testimonial-card {
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 12px 32px 0px #0000001F;
+  padding: 20px;
+  margin: 15px;
+}
+.testimonial-avatar {
+  width: 50px;
+  height: 50px;
+}
+.testimonial-section {
+  position: relative;
+  padding: 50px 0;
+  background-color: #B4FEC4; /* Background color without opacity */
+  z-index: 1; /* Keeps content on top */
+  margin-top: 30px;
+  margin-bottom: 18px;
+}
+
+.testimonial-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../assets/abdelgawad.png");
+  background-repeat: repeat;
+  opacity: 0.05; /* Opacity applied to the image only */
+  z-index: -1; /* Puts the background image behind the content */
+}
+
+.testimonial-header {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #184363;
+  width: 70%;
+  padding: 50px 0 0 50px;
+  text-align: start;
+}
+.spans{
+  align-self: flex-end;
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spanArrow{
+  background-color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+.testimonial-card p{
+  font-weight: 700;
+    font-size: 23px;
+    text-align: start;
+    line-height: 30px;
+    padding-bottom: 15px;
+    line-height: 32px;
+
+}
+.contentOfAvatar{
+  justify-content: start !important;
+}
+.contentOfAvatar div{
+  font-size: 12px;
+  color: #184363;
+}
+.contentOfAvatar div h6{
+text-align: start !important;
+font-weight: bold;}
+
+
+.testimonial-nav {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.section-2-Abdelgawad{
+background: linear-gradient(88.81deg, rgba(60, 218, 95, 0.3) -0.15%, #F3F8FF 33.24%, #FFFFFF 64.13%, #F4F9FF 78.87%, rgba(60, 218, 95, 0.3) 109.42%);
+box-shadow: 0px 4px 20px 0px #3CDA5F1A;
+margin-bottom: 18px;
+
+}
+
+
+.background-img{
+  background-image: url("../../../assets/600ef914c0287cf8ce05cb892663535bA.png");
+  background-size: 100% 100%;
+  width: 357px;
+  height: 409px;
+  margin-left: 45px;
+  margin-right: 70px;
+
+}
+.secontion-content{
+  padding: 50px;
+  width: 50%;
+  display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+
+}
+.section-2-Abdelgawad-header{
+
+    font-size: 38px;
+    font-weight: bold;
+    font-family: system-ui;
+
+}
+.section-2-Abdelgawad-button{
+  width: 235px;
+  padding: 20px;
+    color: white;
+    border: none;
+    background-color: #3CDA5F;
+    font-weight: 800;
+    border-radius: 10px;
+}
+/* Abdelgawad section */
