@@ -25,7 +25,6 @@
   background-color: #B4FEC4; /* Background color without opacity */
   z-index: 1; /* Keeps content on top */
   margin-top: 30px;
-  margin-bottom: 18px;
 }
 
 .testimonial-section::before {
@@ -95,8 +94,6 @@ font-weight: bold;}
 .section-2-Abdelgawad{
 background: linear-gradient(88.81deg, rgba(60, 218, 95, 0.3) -0.15%, #F3F8FF 33.24%, #FFFFFF 64.13%, #F4F9FF 78.87%, rgba(60, 218, 95, 0.3) 109.42%);
 box-shadow: 0px 4px 20px 0px #3CDA5F1A;
-margin-bottom: 18px;
-
 }
 
 
