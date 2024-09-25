@@ -6,7 +6,16 @@
     background-image: linear-gradient(rgba(60, 218, 94, 0.97),rgba(60, 218, 94, 0.97)) ,url("./../../../assets/download.png");
     background-size: 15%;
 }
-
+@media  (max-width: 1217px) {
+    .costomize1,.costomize2{
+        width: 100%;
+      }
+    }
+@media  (max-width: 635px) {
+    .costomize2{
+        display: none;
+      }
+    }
 /* Karam */
 .colors{
   color:#184363;
@@ -48,6 +57,18 @@
 }
 
 /* Karam */
+@media  (max-width: 991px) {
+  .castomize3{
+    width: 100%;
+  }
+
+}
+@media  (max-width: 786px) {
+.castomize4{
+  width: 100%;
+}
+
+}
 
 /* Abdelgawad section */
 .testimonial-card {
@@ -174,3 +195,28 @@ box-shadow: 0px 4px 20px 0px #3CDA5F1A;
     border-radius: 10px;
 }
 /* Abdelgawad section */
+@media  (max-width: 992px) {
+  .costomize5{
+    display: none;
+  }
+
+  }
+@media  (max-width: 992px) {
+  .costomize6{
+width: 100%;
+  }
+
+  }
+@media  (max-width: 992px) {
+  .costomize7{
+width: 100%;
+  }
+
+  }
+@media  (max-width: 419px) {
+  .background-img{
+width:250px !important;
+height: 380px !important;
+  }
+
+  }

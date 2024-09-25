@@ -26,6 +26,7 @@ export class ProductsComponent implements OnInit {
   selectedCategory: string = '';
   searchTerm: string = '';  // New property to store the search term
   selectedOption: string = 'products';
+  numOfProductsInCategory:number = -1;
 
 
   checkSelectedOption() {
@@ -76,31 +77,50 @@ export class ProductsComponent implements OnInit {
 
    
   }
-  deleteLogicCategory(id:string){
 
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#30d633",
-      cancelButtonColor: "#818181",
-      confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this._ApiService.delete_product(id).subscribe({
-          next:()=>{
-            Swal.fire({
-              title: "Deleted!",
-              text: "Product has been deleted.",
-              confirmButtonColor: "#30d633",
-              icon: "success"
-            });
-            this.filteredProducts = this.filteredProducts.filter(product => product.id!== id)
-          }
-        })
-      }
-    });
+  isCatGotProducts(c:string):number{
+    let p = this.allProducts.filter(product => product.category.name == c)
+    this.numOfProductsInCategory = p.length
+    return p.length
+  }
+
+  deleteLogicCategory(id:string,categoryname:string){
+    if(this.isCatGotProducts(categoryname)){
+      
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You Can't Delete this Product !",
+        footer: 'Delete All product in this category first'
+      });
+      
+    }
+    else{
+      
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#30d633",
+        cancelButtonColor: "#818181",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this._ApiService.delete_Category(id).subscribe({
+            next:()=>{
+              Swal.fire({
+                title: "Deleted!",
+                text: "Category has been deleted.",
+                confirmButtonColor: "#30d633",
+                icon: "success"
+              });
+              this.categories= this.categories.filter(cat => cat.id!== id)
+            }
+          })
+        }
+      });
+    }
 
    
   }
