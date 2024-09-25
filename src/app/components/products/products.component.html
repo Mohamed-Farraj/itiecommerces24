@@ -5,7 +5,7 @@
 
       <select [ngStyle]="{ display: cat !== 'all' ? 'block' : 'block' }" [(ngModel)]="selectedCategory" (change)="onCategoryChange(selectedCategory)" class="form-select w-25" aria-label="Default select example">
         <option value="all" selected>All categories</option>
-        @for (cat of categories; track cat._id) {
+        @for (cat of categories; track cat.id) {
         <option [value]="cat.name">{{cat.name}}</option>
     }
       </select>
