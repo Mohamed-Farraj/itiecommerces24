@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Iproduct } from '../../core/interfaces/iproduct';
-import { CommonModule, CurrencyPipe, NgStyle } from '@angular/common';
+import { CommonModule, CurrencyPipe, NgIf, NgStyle } from '@angular/common';
 import { ApiService } from '../../core/services/api.service';
 import { FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [RouterLink, CurrencyPipe, NgStyle, FormsModule,SweetAlert2Module,RouterLink],
+  imports: [RouterLink, CurrencyPipe, NgStyle, FormsModule,SweetAlert2Module,RouterLink,NgIf],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -25,9 +25,12 @@ export class ProductsComponent implements OnInit {
   cat: string = '';
   selectedCategory: string = '';
   searchTerm: string = '';  // New property to store the search term
+  selectedOption: string = 'products';
 
 
-
+  checkSelectedOption() {
+    console.log(this.selectedOption);
+  }
 
 
   showAlert(){
@@ -46,6 +49,34 @@ export class ProductsComponent implements OnInit {
 
 
   deleteLogic(id:string){
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#30d633",
+      cancelButtonColor: "#818181",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._ApiService.delete_product(id).subscribe({
+          next:()=>{
+            Swal.fire({
+              title: "Deleted!",
+              text: "Product has been deleted.",
+              confirmButtonColor: "#30d633",
+              icon: "success"
+            });
+            this.filteredProducts = this.filteredProducts.filter(product => product.id!== id)
+          }
+        })
+      }
+    });
+
+   
+  }
+  deleteLogicCategory(id:string){
 
     Swal.fire({
       title: "Are you sure?",
