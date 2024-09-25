@@ -1,7 +1,19 @@
-<section class="my-5 mt-5 pt-5">
+<section class="d-flex w-100 justify-content-center">
+  <div *ngIf="admin" class="btn-group" role="group" aria-label="Basic radio toggle button group">
+  
+    <input (change)="checkSelectedOption()" [(ngModel)]="selectedOption" [value]="'products'" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+    <label class="btn btn-outline-success px-5" for="btnradio1">Products</label>
+  
+    <input (change)="checkSelectedOption()" [(ngModel)]="selectedOption" [value]="'categories'" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+    <label class="btn btn-outline-success px-5" for="btnradio2">Categories</label>
+  
+  </div>
+</section>
+
+<section class="my-3">
   <div class="container">
-    <div class="filters">
-      <input type="search" class="form-control my-2 w-75 p-3" placeholder="Search by name...." [(ngModel)]="searchTerm" (input)="onSearchChange()">
+    <div *ngIf="selectedOption == 'products'" class="filters">
+      <input  type="search" class="form-control my-2 w-75 p-3" placeholder="Search by name...." [(ngModel)]="searchTerm" (input)="onSearchChange()">
 
       <select [ngStyle]="{ display: cat !== 'all' ? 'block' : 'block' }" [(ngModel)]="selectedCategory" (change)="onCategoryChange(selectedCategory)" class="form-select w-25" aria-label="Default select example">
         <option value="all" selected>All categories</option>
@@ -10,9 +22,9 @@
     }
       </select>
     </div>
-
+    @if (selectedOption == 'products') {
     <div class="row mt-5 pt-5 g-4">
-      @for (product of filteredProducts; track product._id) {
+      @for (product of filteredProducts; track product.id) {
        <div class="col-md-3">
          <div class="card">
           <div [routerLink]="['/details',product.id]" >
@@ -35,6 +47,30 @@
           </div>
         }
     </div>
+  }
+    @else {
+    <div class="row mt-5 pt-5 g-4">
+      @for (cat of categories; track cat.id) {
+       <div class="col-md-3">
+         <div class="card">
+          <div [routerLink]="['/products',cat.name]" >
+            <img [src]="cat.image" class="card-img-top w-100 object-fit-contain" alt="...">
+            <div class="card-body">
+              <h5 class="card-title productTitle">{{cat.name}}</h5>
+            </div>
+          </div>
+          <div class="p-3">
+            <a (click)="showAlert()" [ngStyle]="{ display: admin ? 'none' : 'block' }" class="btn btn-success">Buy now</a>
+            <div [ngStyle]="{ display: admin ? 'block' : 'none' }">
+             <a class="btn btn-warning" [routerLink]="['/admin',cat.id]">Edit</a>
+             <a (click)="deleteLogicCategory(cat.id)" class="btn mx-2 btn-danger">Delete</a>
+            </div>
+          </div>
+           </div>
+          </div>
+        }
+    </div>
+  }
 
     @if (!filteredProducts.length) {<div class="text-danger text-xxl-center fs-1">OOps... there is no products in this category</div>}
 
