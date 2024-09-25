@@ -6,6 +6,7 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { DetailsComponent } from './components/details/details.component';
+import { AddCategoryComponent } from './components/add-category/add-category.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'home', pathMatch:'full'},
@@ -15,5 +16,6 @@ export const routes: Routes = [
     {path: 'admin' , component:AdminComponent},
     {path:'details/:id',component:DetailsComponent},
     {path: 'admin/:id' , component:AddProductComponent},
+    {path: 'add-category/:id' , component:AddCategoryComponent},
     {path:'**' , component:NotFoundComponent} ,
 ];
