@@ -116,6 +116,14 @@ a:hover {
 .wish-btn{
 color: red;
 }
+
+.btn-success,.btn-check:checked + .btn{
+  background-color: #4FDE6F !important;
+  outline: none !important;
+  border: none !important;
+}
+
+
 @media (max-width: 768px) {
   .product .addToCart{
     transform: translateY(0);
