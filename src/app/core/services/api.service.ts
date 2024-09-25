@@ -12,12 +12,32 @@ export class ApiService {
 
   constructor(public http:HttpClient) { }
 
-  Get_All_Products():Observable<any>{
-    return this.http.get<any>(this.ProductsUrl);
-  }
+  // Categories Functions ---------------------------------------------------------
 
   Get_Categories():Observable<any>{
     return this.http.get<any>(this.categoryUrl);
+  }
+
+  Add_Category(category:any):Observable<any>{
+    return this.http.post<any>(this.categoryUrl , category);
+  }
+
+  get_Category(category_id:any):Observable<any>{
+    return this.http.get<any>(`${this.categoryUrl}/${category_id}`);
+  }
+
+  edit_Category(category_id:any , category:any):Observable<any>{
+    return this.http.patch<any>(`${this.categoryUrl}/${category_id}` , category);
+  }
+
+  delete_Category(category_id:any):Observable<any>{
+    return this.http.delete<any>(`${this.categoryUrl}/${category_id}`);
+  }
+
+  // Products Functions ---------------------------------------------------------
+
+  Get_All_Products():Observable<any>{
+    return this.http.get<any>(this.ProductsUrl);
   }
 
   Add_Product(product:any):Observable<any>{
