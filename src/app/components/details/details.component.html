@@ -1,1 +1,30 @@
-<p>details works!</p>
+<div class="container my-5">
+  <div class="row align-items-center">
+    <div class="col-md-5">
+      <img
+        [src]="myproduct.imageCover"
+        class="img-fluid"
+        alt="img"
+      />
+    </div>
+    <div class="col-md-7">
+      <h2 class="product-name">
+        {{myproduct.title}}
+      </h2>
+      <p class="text-muted">
+        {{myproduct.description}}
+      </p>
+      <p>{{myproduct.category.name}}</p>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="price">{{myproduct.price |  currency:'GBP' }}</h3>
+        <div class="rating">
+          <span class="text-warning">&#9733;</span>
+          <span>4.8</span>
+        </div>
+      </div>
+      <div class="d-grid">
+        <button (click)="showAlert()" class="btn btn-success btn-lg">Buy now</button>
+      </div>
+    </div>
+  </div>
+</div>
