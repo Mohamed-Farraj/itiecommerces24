@@ -63,7 +63,7 @@
             <a (click)="showAlert()" [ngStyle]="{ display: admin ? 'none' : 'block' }" class="btn btn-success">Buy now</a>
             <div [ngStyle]="{ display: admin ? 'block' : 'none' }">
              <a class="btn btn-warning" [routerLink]="['/admin',cat.id]">Edit</a>
-             <a (click)="deleteLogicCategory(cat.id)" class="btn mx-2 btn-danger">Delete</a>
+             <a (click)="deleteLogicCategory(cat.id,cat.name)" class="btn mx-2 btn-danger">Delete</a>
             </div>
           </div>
            </div>
