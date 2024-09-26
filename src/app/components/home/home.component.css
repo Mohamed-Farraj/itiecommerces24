@@ -6,6 +6,60 @@
     background-image: linear-gradient(rgba(60, 218, 94, 0.97),rgba(60, 218, 94, 0.97)) ,url("./../../../assets/download.png");
     background-size: 15%;
 }
+.s{
+  animation: smarter 5s linear infinite;
+  
+}
+.h{animation: harder 5s linear infinite;}
+.o{animation: ordered 5s linear infinite;}
+@keyframes smarter{
+
+  0% {
+    color: blue;/* Default color */
+  }
+  33.33% {
+    color: #0A2640;; /* Color for 3 seconds */
+  }
+  66.66% {
+    color: #0A2640; /* Back to default */
+  }
+  100% {
+    color: #0A2640; /* Maintain default until next cycle */
+  }
+
+}
+@keyframes harder{
+
+  0% {
+    color: #0A2640; /* Default color */
+  }
+  33.33% {
+    color: red; /* Color for 3 seconds */
+  }
+  66.66% {
+    color: #0A2640;  /* Back to default */
+  }
+  100% {
+    color: #0A2640; /* Maintain default until next cycle */
+  }
+
+}
+@keyframes ordered{
+
+  0% {
+    color: #0A2640; /* Default color */
+  }
+  33.33% {
+    color: #0A2640; /* Color for 3 seconds */
+  }
+  66.66% {
+    color: green; /* Back to default */
+  }
+  100% {
+    color: green; /* Maintain default until next cycle */
+  }
+
+}
 @media  (max-width: 1217px) {
     .costomize1,.costomize2{
         width: 100%;

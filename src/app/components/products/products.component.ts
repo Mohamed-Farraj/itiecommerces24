@@ -147,6 +147,12 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    console.log('products is destroyed');
+  }
+
   // Filters products by category
   filterByCategory() {
     if (this.cat !== 'all') {

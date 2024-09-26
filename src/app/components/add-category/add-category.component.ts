@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../core/services/api.service';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-category',
@@ -14,6 +15,8 @@ import { CommonModule } from '@angular/common';
 export class AddCategoryComponent {
   categoryId: any;
   mycategory: any;
+  oldName:string = "";
+  newName:string = "";
   myForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     image: new FormControl('', [Validators.required])
@@ -37,6 +40,7 @@ export class AddCategoryComponent {
       this.service.get_Category(this.categoryId).subscribe({
         next: (data) => {
           this.mycategory = data;
+          this.oldName = this.mycategory.name
           this.getImage.setValue(this.mycategory.image);
           this.getName.setValue(this.mycategory.name);
         },
@@ -61,9 +65,42 @@ onsubmit() {
         image: this.myForm.value.image,
         name: this.myForm.value.name,
        };
+       this.newName = this.mycategory.name
       this.service.edit_Category(this.categoryId, this.mycategory).subscribe({
         next: () => {
-          this.router.navigate(['/admin']);
+          console.log(this.oldName,this.newName);
+          if(this.oldName!=this.newName)
+          {
+            let allproducts;
+            this.service.Get_All_Products().subscribe({
+              next: (data) => {
+                allproducts = data;
+                allproducts.forEach((product:any) => {
+                  if(product.category.name==this.oldName)
+                  {
+                    console.log('here is assign log');
+                    product.category.name = this.newName;
+                  }
+                });
+                for(let i = 0; i< allproducts.length;i++){
+                  this.service.edit_product(allproducts[i].id,allproducts[i]).subscribe({
+                    next: () => {
+                      console.log('updated');
+                    }
+                  });
+                }
+              }
+            })
+          }
+          Swal.fire({
+            title: "Successful!",
+            text: "Category has been Edited.",
+            confirmButtonColor: "#30d633",
+            icon: "success"
+          });
+          setTimeout(() => {
+            this.router.navigate(['/admin']);
+          }, 5000);
         },
       });
     }
