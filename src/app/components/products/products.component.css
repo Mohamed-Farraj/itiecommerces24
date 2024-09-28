@@ -32,10 +32,18 @@ select:focus{
   .card{
     position: relative;
     cursor: pointer;
-    
     transition: all 1s;
     
   }
+  .card:hover .card-img-top{
+    /* object-fit: cover !important; */
+    
+  }
+  .card:hover .card-body{
+    scale: 1.05;
+    
+  }
+  .card-body,.card-img-top{transition: all .5s;}
   
   @property --angle{
     syntax: "<angle>";
